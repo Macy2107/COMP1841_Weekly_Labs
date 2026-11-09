@@ -1,0 +1,16 @@
+<?php /** @var array $pdo */ ?>
+<?php
+include __DIR__ . "/includes/DatabaseConnection.php";
+
+function totalJokes($pdo)
+{
+    $sql = "SELECT COUNT(*) FROM week8.joke";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $row = $stmt->fetch();
+    return $row[0];
+}
+
+// Assign database value
+echo totalJokes($pdo);
+
